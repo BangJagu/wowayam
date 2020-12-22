@@ -1,0 +1,7 @@
+#install squid3
+
+apt-get -y install squid;
+cp /etc/squid/squid.conf /etc/squid3/squid.conf.bak
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/BangJagu/wowayam/main/squid.conf"
+sed -i $MYIP2 /etc/squid/squid.conf;
+systemctl restart squid
