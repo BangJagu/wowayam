@@ -124,15 +124,15 @@ fi
 # if [[ -e /etc/debian_version ]]; then
 #  OS=debian
 #  RCLOCAL='/etc/rc.local'
-elif [[ -e /etc/centos-release || -e /etc/redhat-release ]]; then
-  OS=centos
-  RCLOCAL='/etc/rc.d/rc.local'
+# elif [[ -e /etc/centos-release || -e /etc/redhat-release ]]; then
+# OS=centos
+#  RCLOCAL='/etc/rc.d/rc.local'
   # Needed for CentOS 7
-  chmod +x /etc/rc.d/rc.local
-else
-  echo "ESTE SCRIPT SOLO FUNCIONA EN : Debian Y Ubuntu"
-  exit
-fi
+ # chmod +x /etc/rc.d/rc.local
+# else
+# echo "ESTE SCRIPT SOLO FUNCIONA EN : Debian Y Ubuntu"
+#  exit
+# fi
 ###############################################################
 newclienttcp () {
   # This function is used to create tcp client .ovpn file
