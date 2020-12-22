@@ -121,9 +121,9 @@ if grep -qs "CentOS release 5" "/etc/redhat-release"; then
   exit
 fi
 ###############################################################
-if [[ -e /etc/debian_version ]]; then
-  OS=debian
-  RCLOCAL='/etc/rc.local'
+# if [[ -e /etc/debian_version ]]; then
+#  OS=debian
+#  RCLOCAL='/etc/rc.local'
 elif [[ -e /etc/centos-release || -e /etc/redhat-release ]]; then
   OS=centos
   RCLOCAL='/etc/rc.d/rc.local'
@@ -639,7 +639,6 @@ elif [[ $sistema_operativo == *Debian* ]]; then
 debian
 else
 echo "este script no es compatible con este sistema operativo\n" $sistema_operativo
-fi
 
 
 cd
