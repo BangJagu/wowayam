@@ -162,14 +162,7 @@ refresh_pattern .               0       20%     4320
 END
 		IP2="s/xxxxxxxxx/$IP/g";
 		sed -i $IP2 /etc/squid/squid.conf;
-		/etc/init.d/squid restart
-		/etc/init.d/openvpn restart
-		/etc/init.d/nginx restart
-	fi
-
-fi
-
-
+		
 function ubuntu_14(){
 echo "INSTALANDO OPENVPN EN UBUNTU 14...\n"
 apt-get -y install openvpn easy-rsa openssl iptables > /dev/null 2>&1
