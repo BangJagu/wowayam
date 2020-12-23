@@ -18,7 +18,6 @@ if [ -f /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so ]; 
 Plugin_autent='/usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so';
 else
 Plugin_autent='/usr/lib/openvpn/openvpn-plugin-auth-pam.so';
-fi
 
 cd
 apt-get -y install nginx
@@ -783,7 +782,6 @@ debian
 else
 echo "este script no es compatible con este sistema operativo\n" $sistema_operativo
 
-fi
 
 
 echo ""
