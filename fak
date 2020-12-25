@@ -95,7 +95,7 @@ echo "========================================================="
 
 apt -y install nginx
 rm /etc/nginx/sites-enabled/default
-etc/nginx/sites-enabled/default "http://evira.us/default"
+etc/nginx/sites-enabled/default "https://raw.githubusercontent.com/kingmapualaut/THEone/main/default"
 systemctl restart nginx
 
 
