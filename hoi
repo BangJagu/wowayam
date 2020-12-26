@@ -160,18 +160,7 @@ rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/ara-rangers/vps/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>SETUP BY ARA PM +601126996292</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/ara-rangers/vps/master/vps.conf"
-sed -i 's/listen = \/var\/run\/php7.0-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.0/fpm/pool.d/www.conf
-useradd -m vps;
-mkdir -p /home/vps/public_html
-echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
-chown -R www-data:www-data /home/vps/public_html
-chmod -R g+rw /home/vps/public_html
-cd /home/vps/public_html
-wget -O /home/vps/public_html/uptime.php "http://autoscript.kepalatupai.com/uptime.php1"
-wget -O /home/vps/public_html/index.html "https://gakod.com/debian/indexx.html"
-service php7.0-fpm start
-service nginx restart
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/BangJagu/bangkontol/main/vps.conf"
 cd
 # Install openvpn
 cr
@@ -189,7 +178,7 @@ fi
 
 # cln
 cd /
-wget -q -O ovpn.tar "https://raw.githubusercontent.com/BangJagu/wowayam/main/openvpn.tar"
+wget -q -O ovpn.tar "https://raw.githubusercontent.com/BangJagu/on/main/pen/openvpn.tar"
 tar xf ovpn.tar
 rm ovpn.tar
 
@@ -219,14 +208,17 @@ comp-lzo
 script-security 3
 
 <ca>
-$(cat /etc/openvpn/ca.pem)
+$(cat /etc/openvpn/ca.crt)
 </ca>
 <cert>
-$(cat /etc/openvpn/client-cert.pem)
+$(cat /etc/openvpn/server.crt)
 </cert>
 <key>
-$(cat /etc/openvpn/ca-key.pem)
+$(cat /etc/openvpn/server.key)
 </key>
+<tls-auth-key>
+$(cat /etc/openvpn/ta.key)
+</tls-auth-key>
 EOF1
 
 cat > /etc/openvpn/sam.ovpn << EOF2
@@ -254,13 +246,13 @@ comp-lzo
 script-security 3
 
 <ca>
-$(cat /etc/openvpn/ca.pem)
+$(cat /etc/openvpn/ca.crt)
 </ca>
 <cert>
-$(cat /etc/openvpn/client-cert.pem)
+$(cat /etc/openvpn/server.crt)
 </cert>
 <key>
-$(cat /etc/openvpn/ca-key.pem)
+$(cat /etc/openvpn/server.key)
 </key>
 EOF2
 
@@ -289,148 +281,15 @@ comp-lzo
 script-security 3
 
 <ca>
-$(cat /etc/openvpn/ca.pem)
+$(cat /etc/openvpn/ca.crt)
 </ca>
 <cert>
-$(cat /etc/openvpn/client-cert.pem)
+$(cat /etc/openvpn/server.crt)
 </cert>
 <key>
-$(cat /etc/openvpn/ca-key.pem)
+$(cat /etc/openvpn/server.key)
+</key>
 EOF6
-
-cat > /etc/openvpn/Dtacà¹‚à¸‹à¹€à¸Šà¸µà¹ˆà¸¢à¸§.ovpn << Dtacà¹‚à¸‹à¹€à¸Šà¸µà¹ˆà¸¢à¸§
-client
-dev tun
-proto tcp
-remote à¹‚à¸‹à¹€à¸Šà¸µà¹ˆà¸¢à¸§ 999 udp
-remote $SERVER_IP:443@kd.truevisions.tv.line.naver.jp
-http-proxy $SERVER_IP 8080
-http-proxy-option CUSTOM-HEADER Host:api.twitter.com
-connect-retry 1
-connect-timeout 120
-resolv-retry infinite
-route-method exe
-nobind
-ping 5
-ping-restart 30
-persist-key
-persist-tun
-persist-remote-ip
-mute-replay-warnings
-verb 3
-cipher none
-comp-lzo
-script-security 3
-
-Dtacà¹‚à¸‹à¹€à¸Šà¸µà¹ˆà¸¢à¸§
-
-cat > /etc/openvpn/face+line.ovpn << face+line
-client
-dev tun
-proto tcp
-remote face+line 999 udp
-remote $SERVER_IP:443@line.naver.jp
-http-proxy-retry
-http-proxy $SERVER_IP 8080
-connect-retry 1
-connect-timeout 120
-resolv-retry infinite
-route-method exe
-nobind
-ping 5
-ping-restart 30
-persist-key
-persist-tun
-persist-remote-ip
-mute-replay-warnings
-verb 3
-cipher none
-comp-lzo
-script-security 3
-
-face+line
-
-cat > /etc/openvpn/Trueà¸›à¸¥à¸¹à¸à¸›à¸±à¸à¸à¸².ovpn << Trueà¸›à¸¥à¸¹à¸à¸›à¸±à¸à¸à¸²
-client
-dev tun
-remote Trueà¸›à¸¥à¸¹à¸à¸›à¸±à¸à¸à¸² 999 udp
-remote $SERVER_IP 443
-
-http-proxy-retry
-
-http-proxy-option CUSTOM-HEADER X-Online-Host th.m.wikipedia.org
-
-http-proxy $SERVER_IP 8080
-
-connect-retry 1
-connect-timeout 120
-resolv-retry infinite
-route-method exe
-nobind
-ping 5
-ping-restart 30
-persist-key
-persist-tun
-persist-remote-ip
-mute-replay-warnings
-verb 3
-cipher none
-comp-lzo
-script-security 3
-
-Trueà¸›à¸¥à¸¹à¸à¸›à¸±à¸à¸à¸²
-
-cat > /etc/openvpn/AIS64kbps.ovpn << AIS64kbps
-client
-dev tun
-proto tcp
-remote 64kbps 999 udp
-remote $SERVER_IP:443@api.ais.co.th
-http-proxy $SERVER_IP 8080
-http-proxy-option CUSTOM-HEADER Host t.co
-http-proxy-timeout 5
-connect-retry 1
-connect-timeout 120
-resolv-retry infinite
-route-method exe
-nobind
-ping 5
-ping-restart 30
-persist-key
-persist-tun
-persist-remote-ip
-mute-replay-warnings
-verb 3
-cipher none
-comp-lzo
-script-security 3
-
-AIS64kbps
-
-cat > /etc/openvpn/hanoi.ovpn << hanoi
-client
-dev tun
-proto tcp
-remote $SERVER_IP 443
-http-proxy $SERVER_IP 8080
-connect-retry 1
-connect-timeout 120
-resolv-retry infinite
-route-method exe
-nobind
-ping 5
-ping-restart 30
-persist-key
-persist-tun
-persist-remote-ip
-mute-replay-warnings
-verb 3
-cipher none
-comp-lzo
-script-security 3
-
-hanoi
-
 
 # Restart Service
 service openvpn restart
@@ -569,11 +428,6 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/openvpn restart
 /etc/init.d/cron restart
 /etc/init.d/php7.0-fpm start
-/etc/init.d/ssh restart
-/etc/init.d/dropbear restart
-/etc/init.d/fail2ban restart
-/etc/init.d/webmin restart
-/etc/init.d/stunnel4 restart
 /etc/init.d/squid start
 rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
