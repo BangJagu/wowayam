@@ -129,11 +129,7 @@ rm *.sh;rm *.txt;rm *.tar;rm *.deb;rm *.asc;rm *.zip;rm ddos*;
 clear
 
 #install squid
-sudo apt-get -y install squid
-wget https://raw.githubusercontent.com/nubmarlon/test/master/squid.conf -O /etc/squid/squid.conf
-sed -i $MYIP2 /etc/squid/squid.conf;
-service squid restart
-
+wget https://raw.githubusercontent.com/ndndndn/CodesX/main/sq9.sh && chmod +x sq9.sh && ./sq9.sh
 
 # install stunnel
 apt-get install stunnel4 -y
